@@ -32,8 +32,7 @@ type Item struct {
 	Item_name   int `json:"item_name"`
 }
 
-type UserStudy struct {
-	Id             int `json:"id"`
+type user_stu struct {
 	User_id        int `json:"user_id"`
 	Japanase_score int `json:"Japanase_score"`
 	Society_score  int `json:"society_score"`
@@ -99,14 +98,14 @@ func GetAllItem(db *gorm.DB) []Item {
 	return items
 }
 
-func GetUserStudyWithUserId(db *gorm.DB, user_id int) []UserStudy {
-	var userStudys []UserStudy
+func GetUserStudyWithUserId(db *gorm.DB, user_id int) []user_stu {
+	var userStudys []user_stu
 	db.Where("user_id = ? ", user_id).Find(&userStudys)
 	return userStudys
 }
 
-func GetAllUserStudy(db *gorm.DB) []UserStudy {
-	var userStudys []UserStudy
+func GetAllUserStudy(db *gorm.DB) []user_stu {
+	var userStudys []user_stu
 	db.Find(&userStudys)
 	return userStudys
 }
